@@ -1,0 +1,121 @@
+<mvc:View
+    controllerName="smartcontrols.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:smartVariantManagement="sap.ui.comp.smartvariants" 
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+
+					 <HBox class="exPageVariantPadding">                                                
+       <smartVariantManagement:SmartVariantManagement        
+             id="pageVariantId"
+             persistencyKey="PageVariantPKey" />     
+       </HBox> 
+					<smartFilterBar:SmartFilterBar 
+		id="smartFilterBar"
+		entitySet="expensesSet"
+		smartVariant="pageVariantId">
+		<smartFilterBar:controlConfiguration>
+			<smartFilterBar:ControlConfiguration
+				key="Empid" visibleInAdvancedArea="true" controlType="dropDownList" hasValueHelpDialog="true"
+			label="EMPID" groupId="_BASIC" displayBehaviour="DescriptionOnly"	preventInitialDataFetchInValueHelpDialog="true"  >
+			</smartFilterBar:ControlConfiguration>
+			<smartFilterBar:ControlConfiguration key="Empid">
+						<smartFilterBar:defaultFilterValues>
+								<smartFilterBar:SelectOption low="100">
+								</smartFilterBar:SelectOption>
+							</smartFilterBar:defaultFilterValues>
+						</smartFilterBar:ControlConfiguration>
+		</smartFilterBar:controlConfiguration>
+		
+	</smartFilterBar:SmartFilterBar>
+					<smartTable:SmartTable id="smarttableid" smartVariant="pageVariantId"  smartFilterId="smartFilterBar" tableType="ResponsiveTable"
+					useTablePersonalisation="true" useVariantManagement="true" entitySet="expensesSet" header="Expenses"
+					showRowCount="true" useExportToExcel="true" enableAutoBinding="true" beforeRebindTable="beforeBind"  persistencyKey="PageVariantPKey"
+				initiallyVisibleFields="Empid,Empfname,Emplname,Eyear, Assets, Expensestype,Emonth,Designation">
+<Table sticky="ColumnHeaders,HeaderToolbar">
+<columns>
+<Column>
+<customData>
+<core:CustomData key="p13ndata" value='\{"columnKey":"Expenses", "leadingProperty":"Expenses",
+"columnIndex":"5", "filterProperty":"Expenses", "sortProperty":"Expenses", "type":"date"}'>
+</core:CustomData>
+</customData>
+<Text text="Expenses Column"/>
+
+</Column>
+</columns>
+<items>
+<ColumnListItem>
+<ObjectStatus text="{Expenses}" ></ObjectStatus>
+  <ObjectNumber
+			number="{Expenses}"
+			state="{
+				path: 'Expenses',
+				formatter: '.formatter.availableColor'
+			}"></ObjectNumber>
+</ColumnListItem>
+</items>
+
+
+</Table>
+					
+					
+					
+					</smartTable:SmartTable>
+
+					
+					<smartTable:SmartTable id="smarttableid2" smartFilterId="smartFilterBar" tableType="ResponsiveTable"
+					useTablePersonalisation="true"  demandPopin="true" entitySet="expensesSet" customData:useSmartField="true" header="Expenses"
+					showRowCount="true" useExportToExcel="true" enableAutoBinding="true" 
+				initiallyVisibleFields="Empid,Empfname,Emplname,Expenses,Eyear, Assets, Expensestype,Emonth,Designation">
+
+				<smartTable:customToolbar>
+				
+                    <OverflowToolbar width="100%" id="toolbar2">
+					<ToolbarSpacer/>
+                        <content>
+                            <Button xmlns="sap.m" text="Button" id="button" 
+                                                                  press=".reprocessSelectedRecords"/>
+                        </content>
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
+<Table id="tableid1" sticky="ColumnHeaders,HeaderToolbar" selectionChange="onSelectionChangeChange" mode="SingleSelectMaster">
+<columns>
+<Column>
+
+<Label text="Emp Id , Name"/>
+
+</Column>
+</columns>
+<items>
+<ColumnListItem>
+<cells>
+<ObjectIdentifier text="{Empid} -- {Empfname}"></ObjectIdentifier>
+</cells>
+</ColumnListItem>
+</items>
+
+
+</Table>
+					
+					
+					
+					</smartTable:SmartTable>
+					
+					
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,62 @@
+<mvc:View
+    controllerName="smartcontrols.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartForm="sap.ui.comp.smartform" 
+	xmlns:smartField="sap.ui.comp.smartfield"
+>
+	
+		<App>
+			<pages>
+				<Page id="page" title="Second View" showNavButton="true" navButtonPress="onNavBack">
+					<content>
+					
+
+                    <smartForm:SmartForm 
+		id="smartForm"
+		editTogglable="true" 
+		title="Employee Details"
+	>
+		<smartForm:Group label="Emp Personal Details">
+			<smartForm:GroupElement>
+				<smartField:SmartField value="{Empid}" editable="true" />
+			</smartForm:GroupElement>
+			<smartForm:GroupElement>
+				<smartField:SmartField value="{Empfname}" />
+			</smartForm:GroupElement>
+				<smartForm:GroupElement>
+				<smartField:SmartField value="{Emplname}" />
+			</smartForm:GroupElement>
+            <smartForm:GroupElement>
+				<smartField:SmartField value="{Designation}" />
+			</smartForm:GroupElement>
+			
+		
+		</smartForm:Group>
+		<smartForm:Group label="Empl Expenses Details">
+			<smartForm:GroupElement>
+				<smartField:SmartField value="{Expenses}" />
+			</smartForm:GroupElement>
+            <smartForm:GroupElement>
+				<smartField:SmartField value="{Expensestype}" />
+			</smartForm:GroupElement>
+            <smartForm:GroupElement>
+				<smartField:SmartField value="{Assets}" />
+			</smartForm:GroupElement>
+             <smartForm:GroupElement>
+				<smartField:SmartField value="{Eyear}" />
+			</smartForm:GroupElement>
+            <smartForm:GroupElement>
+				<smartField:SmartField value="{Emonth}" />
+			</smartForm:GroupElement>
+
+            
+		</smartForm:Group>
+	</smartForm:SmartForm>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	
+</mvc:View>
